@@ -3,93 +3,967 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на День Рождения</title>
+
+    <title>Дарья — 18</title>
+
+    <meta name="description" content="Приглашение на день рождения Дарьи">
+
     <style>
-        :root {
-            --rose-gold: #B76E79;
-            --cream: #FDFBF7;
-            --text-color: #4A4A4A;
-        }
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--cream);
-            color: var(--text-color);
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0b0b0b;
+            color: #f4f1ea;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --gold: #c9a96e;
+            --cream: #f4f1ea;
+            --dark: #0b0b0b;
+            --gray: #999;
+        }
+
+        section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 70px 25px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
             text-align: center;
         }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+        .gold {
+            color: var(--gold);
         }
-        h1 {
-            color: var(--rose-gold);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+
+        .small-title {
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 25px;
         }
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100svh;
+            text-align: center;
+            overflow: hidden;
         }
-        form {
-            margin-top: 30px;
-            text-align: left;
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(201,169,110,0.14),
+                    transparent 45%
+                );
+            pointer-events: none;
         }
-        label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: bold;
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 1.5s ease forwards;
         }
-        input[type="text"], select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
+
+        .invited {
+            font-size: 10px;
+            letter-spacing: 7px;
+            color: var(--gold);
+            margin-bottom: 45px;
         }
-        button {
-            background-color: var(--rose-gold);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            font-size: 1.1rem;
-            border-radius: 30px;
+
+        .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(80px, 23vw, 220px);
+            line-height: 0.75;
+            font-weight: 300;
+            letter-spacing: -5px;
+        }
+
+        .age {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(100px, 30vw, 280px);
+            font-weight: 300;
+            line-height: 0.8;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--gold);
             margin-top: 20px;
+        }
+
+        .date {
+            margin-top: 50px;
+            font-size: 13px;
+            letter-spacing: 4px;
+        }
+
+        .scroll {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            letter-spacing: 4px;
+            color: #888;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 45px;
+            background: var(--gold);
+            margin: 12px auto 0;
+            animation: scrollLine 2s infinite;
+        }
+
+        /* ================= INVITATION ================= */
+
+        .invitation {
+            background: #111;
+        }
+
+        .invitation h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(50px, 12vw, 100px);
+            font-weight: 300;
+            line-height: 0.9;
+            margin-bottom: 45px;
+        }
+
+        .invitation p {
+            max-width: 550px;
+            margin: auto;
+            color: #aaa;
+            font-size: 14px;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        /* ================= COUNTDOWN ================= */
+
+        .countdown-section {
+            background: #0b0b0b;
+        }
+
+        .countdown-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(50px, 12vw, 100px);
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 750px;
+            margin: auto;
+            gap: 15px;
+        }
+
+        .time-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(45px, 9vw, 90px);
+            font-weight: 300;
+        }
+
+        .time-label {
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: #777;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* ================= PLACE ================= */
+
+        .place {
+            background: #111;
+        }
+
+        .place-card {
+            border: 1px solid rgba(201,169,110,0.35);
+            padding: 70px 30px;
+            position: relative;
+        }
+
+        .place-card::before,
+        .place-card::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-color: var(--gold);
+            border-style: solid;
+        }
+
+        .place-card::before {
+            top: 15px;
+            left: 15px;
+            border-width: 1px 0 0 1px;
+        }
+
+        .place-card::after {
+            right: 15px;
+            bottom: 15px;
+            border-width: 0 1px 1px 0;
+        }
+
+        .place-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(55px, 11vw, 100px);
+            font-weight: 300;
+            line-height: 0.9;
+            margin: 30px 0;
+        }
+
+        .place-info {
+            color: #999;
+            line-height: 2;
+            font-size: 13px;
+        }
+
+        .map-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 35px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 3px;
+            transition: 0.3s;
+        }
+
+        .map-button:hover {
+            background: var(--gold);
+            color: #111;
+        }
+
+        /* ================= DRESS CODE ================= */
+
+        .dress {
+            background: #0b0b0b;
+        }
+
+        .dress-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(55px, 12vw, 110px);
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .dress-text {
+            color: #888;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        /* ================= RSVP ================= */
+
+        .rsvp {
+            background: #111;
+        }
+
+        .rsvp-card {
+            max-width: 650px;
+            margin: auto;
+            border: 1px solid rgba(201,169,110,0.35);
+            padding: 65px 30px;
+            position: relative;
+        }
+
+        .rsvp-card::before,
+        .rsvp-card::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-color: var(--gold);
+            border-style: solid;
+        }
+
+        .rsvp-card::before {
+            top: 15px;
+            left: 15px;
+            border-width: 1px 0 0 1px;
+        }
+
+        .rsvp-card::after {
+            right: 15px;
+            bottom: 15px;
+            border-width: 0 1px 1px 0;
+        }
+
+        .rsvp-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(55px, 13vw, 105px);
+            font-weight: 300;
+            line-height: 0.85;
+            margin-bottom: 25px;
+        }
+
+        .rsvp-subtitle {
+            color: #888;
+            font-size: 12px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .rsvp-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .rsvp-button {
+            background: transparent;
+            border: 1px solid rgba(201,169,110,0.5);
+            color: var(--cream);
+            padding: 18px 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
             cursor: pointer;
+            transition: all 0.35s ease;
+        }
+
+        .rsvp-button:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .rsvp-button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #111;
+        }
+
+        .name-form {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s ease;
+        }
+
+        .name-form.show {
+            display: block;
+            animation: formAppear 0.5s ease forwards;
+        }
+
+        .name-label {
+            display: block;
+            color: #888;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .name-input {
             width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(201,169,110,0.5);
+            padding: 15px 5px;
+            color: var(--cream);
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 27px;
+            outline: none;
+        }
+
+        .name-input:focus {
+            border-bottom-color: var(--gold);
+        }
+
+        .confirm-button {
+            width: 100%;
+            margin-top: 30px;
+            padding: 17px;
+            background: var(--gold);
+            border: 1px solid var(--gold);
+            color: #111;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .confirm-button:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .rsvp-message {
+            display: none;
+            padding-top: 25px;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            line-height: 1.2;
+        }
+
+        .rsvp-message.show {
+            display: block;
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        /* ================= FINAL ================= */
+
+        .final {
+            min-height: 90vh;
+            background: #111;
+        }
+
+        .final-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(70px, 17vw, 170px);
+            font-weight: 300;
+            line-height: 0.8;
+        }
+
+        .final-date {
+            margin-top: 50px;
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: var(--gold);
+        }
+
+        .heart {
+            margin-top: 50px;
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        /* ================= ANIMATIONS ================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes formAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scrollLine {
+            0% {
+                transform: scaleY(0);
+                transform-origin: top;
+            }
+
+            50% {
+                transform: scaleY(1);
+                transform-origin: top;
+            }
+
+            51% {
+                transform-origin: bottom;
+            }
+
+            100% {
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 50px 20px;
+            }
+
+            .countdown {
+                gap: 5px;
+            }
+
+            .time-number {
+                font-size: 45px;
+            }
+
+            .time-label {
+                font-size: 7px;
+                letter-spacing: 2px;
+            }
+
+            .place-card,
+            .rsvp-card {
+                padding: 60px 20px;
+            }
+
+            .name {
+                letter-spacing: -3px;
+            }
+
+            .rsvp-buttons {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Приглашение</h1>
-        <p>Приглашаю тебя отметить мой особенный день!</p>
-        
-        <!-- Action URL should be replaced with Google Forms/Sheet endpoint -->
-        <form action="YOUR_GOOGLE_FORM_ACTION_URL" method="POST">
-            <label for="name">Твое имя:</label>
-            <input type="text" id="name" name="entry.123456789" required>
-            
-            <label for="attendance">Будешь ли ты?</label>
-            <select id="attendance" name="entry.987654321">
-                <option value="Да, буду!">Да, буду!</option>
-                <option value="К сожалению, не смогу">К сожалению, не смогу</option>
-            </select>
-            
-            <label for="drink">Предпочтения по напиткам:</label>
-            <select id="drink" name="entry.555666777">
-                <option value="Шампанское">Шампанское</option>
-                <option value="Вино">Вино</option>
-                <option value="Коктейли">Коктейли</option>
-                <option value="Безалкогольное">Безалкогольное</option>
-            </select>
-            
-            <button type="submit">Отправить ответ</button>
-        </form>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="invited">
+            YOU ARE INVITED
+        </div>
+
+        <div class="name">
+            ДАРЬЯ
+        </div>
+
+        <div class="age">
+            18
+        </div>
+
+        <div class="date">
+            12 · 09 · 2026 &nbsp; / &nbsp; 18:00
+        </div>
+
     </div>
+
+    <div class="scroll">
+        SCROLL TO EXPLORE
+        <div class="scroll-line"></div>
+    </div>
+
+</section>
+
+
+<!-- ================= INVITATION ================= -->
+
+<section class="invitation">
+
+    <div class="container">
+
+        <div class="small-title">
+            THE INVITATION
+        </div>
+
+        <h2>
+            18 — это<br>
+            только начало.
+        </h2>
+
+        <p>
+            Есть дни рождения, которые хочется
+            запомнить надолго.
+            <br><br>
+            Поэтому я хочу провести этот особенный
+            вечер вместе с вами.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COUNTDOWN ================= -->
+
+<section class="countdown-section">
+
+    <div class="container">
+
+        <div class="small-title">
+            COUNTDOWN
+        </div>
+
+        <div class="countdown-title">
+            До встречи
+        </div>
+
+        <div class="countdown">
+
+            <div>
+                <div class="time-number" id="days">00</div>
+                <div class="time-label">дней</div>
+            </div>
+
+            <div>
+                <div class="time-number" id="hours">00</div>
+                <div class="time-label">часов</div>
+            </div>
+
+            <div>
+                <div class="time-number" id="minutes">00</div>
+                <div class="time-label">минут</div>
+            </div>
+
+            <div>
+                <div class="time-number" id="seconds">00</div>
+                <div class="time-label">секунд</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PLACE ================= -->
+
+<section class="place">
+
+    <div class="container">
+
+        <div class="place-card">
+
+            <div class="small-title">
+                THE PLACE
+            </div>
+
+            <div class="place-name">
+                Золотой<br>
+                Лев
+            </div>
+
+            <div class="place-info">
+                Витебск
+                <br>
+                12 сентября 2026
+                <br>
+                Начало в 18:00
+            </div>
+
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=Ресторан+Золотой+Лев+Витебск"
+                target="_blank"
+                class="map-button"
+            >
+                ОТКРЫТЬ НА КАРТЕ
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DRESS CODE ================= -->
+
+<section class="dress">
+
+    <div class="container">
+
+        <div class="small-title">
+            DRESS CODE
+        </div>
+
+        <div class="dress-title">
+            YOUR STYLE.
+        </div>
+
+        <div class="dress-text">
+            Особого dress code нет.<br>
+            Главное — приходите в хорошем настроении.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RSVP ================= -->
+
+<section class="rsvp">
+
+    <div class="container">
+
+        <div class="rsvp-card">
+
+            <div class="small-title">
+                RSVP
+            </div>
+
+            <div class="rsvp-title">
+                Сможете<br>
+                прийти?
+            </div>
+
+            <div class="rsvp-subtitle">
+                Пожалуйста, сообщите,<br>
+                сможете ли вы быть со мной в этот день.
+            </div>
+
+
+            <div class="rsvp-buttons">
+
+                <button
+                    class="rsvp-button"
+                    id="yesButton"
+                    onclick="selectAnswer('yes')"
+                >
+                    ДА, БУДУ ♡
+                </button>
+
+                <button
+                    class="rsvp-button"
+                    id="noButton"
+                    onclick="selectAnswer('no')"
+                >
+                    НЕ СМОГУ
+                </button>
+
+            </div>
+
+
+            <div class="name-form" id="nameForm">
+
+                <label class="name-label">
+                    Ваше имя
+                </label>
+
+                <input
+                    type="text"
+                    class="name-input"
+                    id="guestName"
+                    placeholder="Введите имя"
+                    autocomplete="name"
+                >
+
+                <button
+                    class="confirm-button"
+                    onclick="confirmRSVP()"
+                >
+                    ПОДТВЕРДИТЬ
+                </button>
+
+            </div>
+
+
+            <div
+                class="rsvp-message"
+                id="rsvpMessage"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FINAL ================= -->
+
+<section class="final">
+
+    <div class="container">
+
+        <div class="small-title">
+            SEE YOU THERE
+        </div>
+
+        <div class="final-title">
+            Давайте<br>
+            отпразднуем.
+        </div>
+
+        <div class="final-date">
+            12 · 09 · 2026
+        </div>
+
+        <div class="heart">
+            ♡
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+    /* ================= COUNTDOWN ================= */
+
+    const birthday = new Date(
+        "2026-09-12T18:00:00+03:00"
+    );
+
+    function updateCountdown() {
+
+        const now = new Date();
+
+        const difference = birthday - now;
+
+        if (difference <= 0) {
+
+            document.getElementById("days").textContent = "00";
+            document.getElementById("hours").textContent = "00";
+            document.getElementById("minutes").textContent = "00";
+            document.getElementById("seconds").textContent = "00";
+
+            return;
+        }
+
+        const days = Math.floor(
+            difference / (1000 * 60 * 60 * 24)
+        );
+
+        const hours = Math.floor(
+            (difference / (1000 * 60 * 60)) % 24
+        );
+
+        const minutes = Math.floor(
+            (difference / (1000 * 60)) % 60
+        );
+
+        const seconds = Math.floor(
+            (difference / 1000) % 60
+        );
+
+        document.getElementById("days").textContent =
+            String(days).padStart(2, "0");
+
+        document.getElementById("hours").textContent =
+            String(hours).padStart(2, "0");
+
+        document.getElementById("minutes").textContent =
+            String(minutes).padStart(2, "0");
+
+        document.getElementById("seconds").textContent =
+            String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+
+    /* ================= RSVP ================= */
+
+    let selectedAnswer = null;
+
+
+    function selectAnswer(answer) {
+
+        selectedAnswer = answer;
+
+        const yesButton =
+            document.getElementById("yesButton");
+
+        const noButton =
+            document.getElementById("noButton");
+
+        const nameForm =
+            document.getElementById("nameForm");
+
+        yesButton.classList.remove("active");
+        noButton.classList.remove("active");
+
+        if (answer === "yes") {
+
+            yesButton.classList.add("active");
+
+        } else {
+
+            noButton.classList.add("active");
+
+        }
+
+        nameForm.classList.add("show");
+
+        document
+            .getElementById("guestName")
+            .focus();
+    }
+
+
+    function confirmRSVP() {
+
+        const name =
+            document
+                .getElementById("guestName")
+                .value
+                .trim();
+
+        const message =
+            document.getElementById("rsvpMessage");
+
+        const form =
+            document.getElementById("nameForm");
+
+        if (!name) {
+
+            alert("Пожалуйста, введите ваше имя.");
+
+            return;
+        }
+
+
+        form.style.display = "none";
+
+
+        if (selectedAnswer === "yes") {
+
+            message.innerHTML =
+                "Спасибо, " +
+                name +
+                "!<br><br>Буду ждать вас ♡";
+
+        } else {
+
+            message.innerHTML =
+                "Спасибо, " +
+                name +
+                "!<br><br>Буду очень скучать ♡";
+
+        }
+
+        message.classList.add("show");
+
+    }
+
+</script>
+
 </body>
 </html>
