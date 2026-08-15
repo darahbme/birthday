@@ -28,16 +28,12 @@
             overflow-x: hidden;
         }
 
-        /* ===== GOLD ===== */
-
         :root {
             --gold: #c9a96e;
             --cream: #f4f1ea;
             --dark: #0b0b0b;
             --gray: #999;
         }
-
-        /* ===== COMMON ===== */
 
         section {
             min-height: 100vh;
@@ -67,7 +63,7 @@
             margin-bottom: 25px;
         }
 
-        /* ===== HERO ===== */
+        /* ================= HERO ================= */
 
         .hero {
             min-height: 100svh;
@@ -143,7 +139,7 @@
             animation: scrollLine 2s infinite;
         }
 
-        /* ===== INVITATION ===== */
+        /* ================= INVITATION ================= */
 
         .invitation {
             background: #111;
@@ -166,7 +162,7 @@
             font-weight: 300;
         }
 
-        /* ===== COUNTDOWN ===== */
+        /* ================= COUNTDOWN ================= */
 
         .countdown-section {
             background: #0b0b0b;
@@ -201,7 +197,7 @@
             margin-top: 5px;
         }
 
-        /* ===== PLACE ===== */
+        /* ================= PLACE ================= */
 
         .place {
             background: #111;
@@ -266,7 +262,7 @@
             color: #111;
         }
 
-        /* ===== DRESS CODE ===== */
+        /* ================= DRESS CODE ================= */
 
         .dress {
             background: #0b0b0b;
@@ -282,9 +278,162 @@
         .dress-text {
             color: #888;
             font-size: 13px;
+            line-height: 2;
         }
 
-        /* ===== FINAL ===== */
+        /* ================= RSVP ================= */
+
+        .rsvp {
+            background: #111;
+        }
+
+        .rsvp-card {
+            max-width: 650px;
+            margin: auto;
+            border: 1px solid rgba(201,169,110,0.35);
+            padding: 65px 30px;
+            position: relative;
+        }
+
+        .rsvp-card::before,
+        .rsvp-card::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-color: var(--gold);
+            border-style: solid;
+        }
+
+        .rsvp-card::before {
+            top: 15px;
+            left: 15px;
+            border-width: 1px 0 0 1px;
+        }
+
+        .rsvp-card::after {
+            right: 15px;
+            bottom: 15px;
+            border-width: 0 1px 1px 0;
+        }
+
+        .rsvp-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(55px, 13vw, 105px);
+            font-weight: 300;
+            line-height: 0.85;
+            margin-bottom: 25px;
+        }
+
+        .rsvp-subtitle {
+            color: #888;
+            font-size: 12px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .rsvp-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .rsvp-button {
+            background: transparent;
+            border: 1px solid rgba(201,169,110,0.5);
+            color: var(--cream);
+            padding: 18px 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+
+        .rsvp-button:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .rsvp-button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #111;
+        }
+
+        .name-form {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s ease;
+        }
+
+        .name-form.show {
+            display: block;
+            animation: formAppear 0.5s ease forwards;
+        }
+
+        .name-label {
+            display: block;
+            color: #888;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .name-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(201,169,110,0.5);
+            padding: 15px 5px;
+            color: var(--cream);
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 27px;
+            outline: none;
+        }
+
+        .name-input:focus {
+            border-bottom-color: var(--gold);
+        }
+
+        .confirm-button {
+            width: 100%;
+            margin-top: 30px;
+            padding: 17px;
+            background: var(--gold);
+            border: 1px solid var(--gold);
+            color: #111;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .confirm-button:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .rsvp-message {
+            display: none;
+            padding-top: 25px;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            line-height: 1.2;
+        }
+
+        .rsvp-message.show {
+            display: block;
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        /* ================= FINAL ================= */
 
         .final {
             min-height: 90vh;
@@ -311,12 +460,24 @@
             font-size: 20px;
         }
 
-        /* ===== ANIMATION ===== */
+        /* ================= ANIMATIONS ================= */
 
         @keyframes fadeUp {
             from {
                 opacity: 0;
                 transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes formAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
 
             to {
@@ -346,7 +507,7 @@
             }
         }
 
-        /* ===== MOBILE ===== */
+        /* ================= MOBILE ================= */
 
         @media (max-width: 600px) {
 
@@ -367,12 +528,17 @@
                 letter-spacing: 2px;
             }
 
-            .place-card {
+            .place-card,
+            .rsvp-card {
                 padding: 60px 20px;
             }
 
             .name {
                 letter-spacing: -3px;
+            }
+
+            .rsvp-buttons {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -547,6 +713,86 @@
 </section>
 
 
+<!-- ================= RSVP ================= -->
+
+<section class="rsvp">
+
+    <div class="container">
+
+        <div class="rsvp-card">
+
+            <div class="small-title">
+                RSVP
+            </div>
+
+            <div class="rsvp-title">
+                Сможете<br>
+                прийти?
+            </div>
+
+            <div class="rsvp-subtitle">
+                Пожалуйста, сообщите,<br>
+                сможете ли вы быть со мной в этот день.
+            </div>
+
+
+            <div class="rsvp-buttons">
+
+                <button
+                    class="rsvp-button"
+                    id="yesButton"
+                    onclick="selectAnswer('yes')"
+                >
+                    ДА, БУДУ ♡
+                </button>
+
+                <button
+                    class="rsvp-button"
+                    id="noButton"
+                    onclick="selectAnswer('no')"
+                >
+                    НЕ СМОГУ
+                </button>
+
+            </div>
+
+
+            <div class="name-form" id="nameForm">
+
+                <label class="name-label">
+                    Ваше имя
+                </label>
+
+                <input
+                    type="text"
+                    class="name-input"
+                    id="guestName"
+                    placeholder="Введите имя"
+                    autocomplete="name"
+                >
+
+                <button
+                    class="confirm-button"
+                    onclick="confirmRSVP()"
+                >
+                    ПОДТВЕРДИТЬ
+                </button>
+
+            </div>
+
+
+            <div
+                class="rsvp-message"
+                id="rsvpMessage"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 <!-- ================= FINAL ================= -->
 
 <section class="final">
@@ -577,17 +823,11 @@
 
 <script>
 
-    /*
-       ДАТА ПРАЗДНИКА
+    /* ================= COUNTDOWN ================= */
 
-       12 сентября 2026 года
-       18:00
-
-       Время указано по часовому поясу
-       Витебска.
-    */
-
-    const birthday = new Date("2026-09-12T18:00:00+03:00");
+    const birthday = new Date(
+        "2026-09-12T18:00:00+03:00"
+    );
 
     function updateCountdown() {
 
@@ -637,6 +877,91 @@
     updateCountdown();
 
     setInterval(updateCountdown, 1000);
+
+
+    /* ================= RSVP ================= */
+
+    let selectedAnswer = null;
+
+
+    function selectAnswer(answer) {
+
+        selectedAnswer = answer;
+
+        const yesButton =
+            document.getElementById("yesButton");
+
+        const noButton =
+            document.getElementById("noButton");
+
+        const nameForm =
+            document.getElementById("nameForm");
+
+        yesButton.classList.remove("active");
+        noButton.classList.remove("active");
+
+        if (answer === "yes") {
+
+            yesButton.classList.add("active");
+
+        } else {
+
+            noButton.classList.add("active");
+
+        }
+
+        nameForm.classList.add("show");
+
+        document
+            .getElementById("guestName")
+            .focus();
+    }
+
+
+    function confirmRSVP() {
+
+        const name =
+            document
+                .getElementById("guestName")
+                .value
+                .trim();
+
+        const message =
+            document.getElementById("rsvpMessage");
+
+        const form =
+            document.getElementById("nameForm");
+
+        if (!name) {
+
+            alert("Пожалуйста, введите ваше имя.");
+
+            return;
+        }
+
+
+        form.style.display = "none";
+
+
+        if (selectedAnswer === "yes") {
+
+            message.innerHTML =
+                "Спасибо, " +
+                name +
+                "!<br><br>Буду ждать вас ♡";
+
+        } else {
+
+            message.innerHTML =
+                "Спасибо, " +
+                name +
+                "!<br><br>Буду очень скучать ♡";
+
+        }
+
+        message.classList.add("show");
+
+    }
 
 </script>
 
