@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Дарья — 18</title>
 
-    <meta name="description" content="Приглашение на день рождения Дарьи">
+    <meta name="description"
+          content="Приглашение на день рождения Дарьи">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        @import url(
+            'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Marck+Script&display=swap'
+        );
+
+        /* ================= RESET ================= */
 
         * {
             margin: 0;
@@ -22,560 +31,1076 @@
         }
 
         body {
-            background: #0b0b0b;
-            color: #f4f1ea;
+            background: #f6f1eb;
+            color: #66554d;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
+        /* ================= COLORS ================= */
+
         :root {
-            --gold: #c9a96e;
-            --cream: #f4f1ea;
-            --dark: #0b0b0b;
-            --gray: #999;
+
+            --cream: #f6f1eb;
+            --cream-dark: #ece2d8;
+
+            --blush: #e6c7ba;
+            --blush-dark: #cfa58f;
+
+            --rose: #b97862;
+            --rose-gold: #c8947c;
+
+            --text: #66554d;
+            --light-text: #9d877b;
+
+            --white: #fffdf9;
+
         }
 
+        /* ================= COMMON ================= */
+
         section {
-            min-height: 100vh;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 70px 25px;
+            padding: 100px 25px;
         }
 
         .container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
-            text-align: center;
         }
 
-        .gold {
-            color: var(--gold);
-        }
+        .section-label {
 
-        .small-title {
-            font-size: 11px;
-            letter-spacing: 5px;
+            font-size: 10px;
+
+            letter-spacing: 6px;
+
             text-transform: uppercase;
-            color: var(--gold);
+
+            color: var(--rose);
+
             margin-bottom: 25px;
+
+        }
+
+        .serif {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
         }
 
         /* ================= HERO ================= */
 
         .hero {
+
             min-height: 100svh;
-            text-align: center;
+
+            display: flex;
+
+            align-items: center;
+
             overflow: hidden;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    rgba(246,241,235,.96),
+                    rgba(246,241,235,.72)
+                ),
+
+                url("images/hero.jpg")
+                center / cover;
+
         }
 
-        .hero::before {
+        .hero::after {
+
             content: "";
+
             position: absolute;
-            inset: 0;
+
+            width: 500px;
+            height: 500px;
+
+            right: -200px;
+            top: -100px;
+
             background:
+
                 radial-gradient(
-                    circle at center,
-                    rgba(201,169,110,0.14),
-                    transparent 45%
+                    circle,
+                    rgba(230,199,186,.5),
+                    transparent 70%
                 );
-            pointer-events: none;
+
+            border-radius: 50%;
+
         }
 
         .hero-content {
+
             position: relative;
+
             z-index: 2;
-            animation: fadeUp 1.5s ease forwards;
+
+            animation:
+                heroAppear
+                1.5s ease;
+
         }
 
-        .invited {
+        .hero-label {
+
             font-size: 10px;
+
             letter-spacing: 7px;
-            color: var(--gold);
-            margin-bottom: 45px;
+
+            color: var(--rose);
+
+            margin-bottom: 35px;
+
         }
 
-        .name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(80px, 23vw, 220px);
-            line-height: 0.75;
+        .hero-name {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(90px, 17vw, 220px);
+
             font-weight: 300;
-            letter-spacing: -5px;
+
+            line-height: .75;
+
+            color: var(--text);
+
         }
 
-        .age {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(100px, 30vw, 280px);
+        .hero-age {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(120px, 24vw, 300px);
+
             font-weight: 300;
-            line-height: 0.8;
+
             color: transparent;
-            -webkit-text-stroke: 1px var(--gold);
+
+            -webkit-text-stroke:
+                1px var(--rose-gold);
+
+            line-height: .8;
+
             margin-top: 20px;
+
         }
 
-        .date {
-            margin-top: 50px;
-            font-size: 13px;
+        .hero-script {
+
+            font-family:
+                'Marck Script',
+                cursive;
+
+            font-size:
+                clamp(40px, 7vw, 75px);
+
+            color: var(--rose);
+
+            margin-top: -15px;
+
+        }
+
+        .hero-date {
+
+            margin-top: 55px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid
+                rgba(185,120,98,.4);
+
+            width: fit-content;
+
+            font-size: 11px;
+
             letter-spacing: 4px;
+
+            color: var(--text);
+
         }
 
         .scroll {
-            position: absolute;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 9px;
-            letter-spacing: 4px;
-            color: #888;
-        }
 
-        .scroll-line {
-            width: 1px;
-            height: 45px;
-            background: var(--gold);
-            margin: 12px auto 0;
-            animation: scrollLine 2s infinite;
+            position: absolute;
+
+            right: 30px;
+
+            bottom: 50px;
+
+            writing-mode:
+                vertical-rl;
+
+            transform:
+                rotate(180deg);
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            color: var(--light-text);
+
         }
 
         /* ================= INVITATION ================= */
 
         .invitation {
-            background: #111;
+
+            background:
+                var(--white);
+
         }
 
-        .invitation h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(50px, 12vw, 100px);
-            font-weight: 300;
-            line-height: 0.9;
-            margin-bottom: 45px;
+        .invitation-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            align-items: center;
+
+            gap: 70px;
+
         }
 
-        .invitation p {
-            max-width: 550px;
-            margin: auto;
-            color: #aaa;
-            font-size: 14px;
-            line-height: 2;
-            font-weight: 300;
+        .invitation-title {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(55px, 7vw, 100px);
+
+            font-weight: 400;
+
+            line-height: .9;
+
+            margin-bottom: 35px;
+
+        }
+
+        .invitation-text {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.6;
+
+            max-width: 500px;
+
+            color: var(--light-text);
+
+        }
+
+        .invitation-image {
+
+            min-height: 500px;
+
+            background:
+
+                linear-gradient(
+                    rgba(255,253,249,.2),
+                    rgba(255,253,249,.2)
+                ),
+
+                url("images/invitation.jpg")
+                center / cover;
+
+            position: relative;
+
+        }
+
+        .invitation-image::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.6);
+
         }
 
         /* ================= COUNTDOWN ================= */
 
         .countdown-section {
-            background: #0b0b0b;
+
+            text-align: center;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--cream),
+                    var(--cream-dark)
+                );
+
         }
 
         .countdown-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(50px, 12vw, 100px);
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(55px, 8vw, 100px);
+
             font-weight: 300;
-            margin-bottom: 60px;
+
+            margin-bottom: 65px;
+
         }
 
         .countdown {
+
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            max-width: 750px;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            max-width: 850px;
+
             margin: auto;
-            gap: 15px;
+
+        }
+
+        .time-block {
+
+            position: relative;
+
+        }
+
+        .time-block:not(:last-child)::after {
+
+            content: "";
+
+            position: absolute;
+
+            right: 0;
+
+            top: 15%;
+
+            width: 1px;
+
+            height: 70%;
+
+            background:
+                rgba(185,120,98,.35);
+
         }
 
         .time-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(45px, 9vw, 90px);
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(55px, 8vw, 110px);
+
             font-weight: 300;
+
         }
 
         .time-label {
+
             font-size: 9px;
-            letter-spacing: 3px;
-            color: #777;
-            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            color: var(--rose);
+
             margin-top: 5px;
+
         }
 
         /* ================= PLACE ================= */
 
         .place {
-            background: #111;
+
+            background:
+                var(--white);
+
         }
 
-        .place-card {
-            border: 1px solid rgba(201,169,110,0.35);
-            padding: 70px 30px;
-            position: relative;
+        .place-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1.2fr;
+
+            gap: 70px;
+
+            align-items: center;
+
         }
 
-        .place-card::before,
-        .place-card::after {
-            content: "";
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            border-color: var(--gold);
-            border-style: solid;
-        }
+        .place-title {
 
-        .place-card::before {
-            top: 15px;
-            left: 15px;
-            border-width: 1px 0 0 1px;
-        }
+            font-family:
+                'Cormorant Garamond',
+                serif;
 
-        .place-card::after {
-            right: 15px;
-            bottom: 15px;
-            border-width: 0 1px 1px 0;
-        }
+            font-size:
+                clamp(60px, 8vw, 110px);
 
-        .place-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(55px, 11vw, 100px);
-            font-weight: 300;
-            line-height: 0.9;
-            margin: 30px 0;
+            font-weight: 400;
+
+            line-height: .9;
+
+            margin-bottom: 30px;
+
         }
 
         .place-info {
-            color: #999;
-            line-height: 2;
-            font-size: 13px;
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 23px;
+
+            line-height: 1.8;
+
+            color: var(--light-text);
+
         }
 
         .map-button {
+
             display: inline-block;
-            margin-top: 40px;
-            padding: 15px 35px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
+
+            margin-top: 35px;
+
+            padding:
+                17px 28px;
+
+            border:
+                1px solid
+                var(--blush-dark);
+
+            color:
+                var(--text);
+
             text-decoration: none;
+
             font-size: 10px;
+
             letter-spacing: 3px;
-            transition: 0.3s;
+
+            transition: .3s;
+
         }
 
         .map-button:hover {
-            background: var(--gold);
-            color: #111;
+
+            background:
+                var(--blush-dark);
+
+            color:
+                white;
+
         }
 
-        /* ================= DRESS CODE ================= */
+        .place-image {
 
-        .dress {
-            background: #0b0b0b;
+            min-height: 450px;
+
+            background:
+
+                linear-gradient(
+                    rgba(255,253,249,.15),
+                    rgba(255,253,249,.15)
+                ),
+
+                url("images/place.jpg")
+                center / cover;
+
+            position: relative;
+
         }
 
-        .dress-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(55px, 12vw, 110px);
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
+        .place-image::before {
 
-        .dress-text {
-            color: #888;
-            font-size: 13px;
-            line-height: 2;
+            content: "";
+
+            position: absolute;
+
+            inset: -15px 15px 15px -15px;
+
+            border:
+                1px solid
+                var(--blush);
+
+            z-index: -1;
+
         }
 
         /* ================= RSVP ================= */
 
         .rsvp {
-            background: #111;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #f5ede7,
+                    #eee0d6
+                );
+
         }
 
-        .rsvp-card {
-            max-width: 650px;
+        .rsvp-wrapper {
+
+            max-width: 850px;
+
             margin: auto;
-            border: 1px solid rgba(201,169,110,0.35);
-            padding: 65px 30px;
-            position: relative;
-        }
 
-        .rsvp-card::before,
-        .rsvp-card::after {
-            content: "";
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            border-color: var(--gold);
-            border-style: solid;
-        }
+            display: grid;
 
-        .rsvp-card::before {
-            top: 15px;
-            left: 15px;
-            border-width: 1px 0 0 1px;
-        }
+            grid-template-columns:
+                1fr 1fr;
 
-        .rsvp-card::after {
-            right: 15px;
-            bottom: 15px;
-            border-width: 0 1px 1px 0;
+            gap: 55px;
+
+            align-items: center;
+
         }
 
         .rsvp-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(55px, 13vw, 105px);
-            font-weight: 300;
-            line-height: 0.85;
-            margin-bottom: 25px;
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(55px, 7vw, 90px);
+
+            font-weight: 400;
+
+            line-height: .9;
+
+            margin-bottom: 30px;
+
         }
 
-        .rsvp-subtitle {
-            color: #888;
-            font-size: 12px;
-            line-height: 1.8;
-            margin-bottom: 40px;
+        .rsvp-text {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 21px;
+
+            color:
+                var(--light-text);
+
+            line-height: 1.5;
+
+        }
+
+        .rsvp-form {
+
+            background:
+                rgba(255,255,255,.7);
+
+            padding: 45px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(120,90,70,.08);
+
+            position: relative;
+
+        }
+
+        .rsvp-form::after {
+
+            content: "♡";
+
+            position: absolute;
+
+            right: 25px;
+            top: 20px;
+
+            font-size: 28px;
+
+            color:
+                var(--blush-dark);
+
         }
 
         .rsvp-buttons {
+
             display: grid;
-            grid-template-columns: 1fr 1fr;
+
+            grid-template-columns:
+                1fr 1fr;
+
             gap: 12px;
+
             margin-bottom: 30px;
+
         }
 
         .rsvp-button {
-            background: transparent;
-            border: 1px solid rgba(201,169,110,0.5);
-            color: var(--cream);
-            padding: 18px 10px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 10px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.35s ease;
-        }
 
-        .rsvp-button:hover {
-            border-color: var(--gold);
-            color: var(--gold);
+            background:
+                transparent;
+
+            border:
+                1px solid
+                var(--blush-dark);
+
+            padding: 17px 10px;
+
+            color:
+                var(--text);
+
+            font-family:
+                'Montserrat',
+                sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: .3s;
+
         }
 
         .rsvp-button.active {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: #111;
+
+            background:
+                var(--blush-dark);
+
+            color:
+                white;
+
+        }
+
+        .rsvp-button:hover {
+
+            background:
+                var(--blush);
+
         }
 
         .name-form {
+
             display: none;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.4s ease;
+
         }
 
         .name-form.show {
+
             display: block;
-            animation: formAppear 0.5s ease forwards;
+
+            animation:
+                formAppear .5s ease;
+
         }
 
         .name-label {
+
             display: block;
-            color: #888;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 20px;
+
+            margin-bottom: 10px;
+
         }
 
         .name-input {
+
             width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(201,169,110,0.5);
-            padding: 15px 5px;
-            color: var(--cream);
-            text-align: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 27px;
+
+            background:
+                rgba(255,255,255,.4);
+
+            border:
+                1px solid
+                rgba(207,165,143,.5);
+
+            padding: 16px;
+
+            color:
+                var(--text);
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 21px;
+
             outline: none;
+
         }
 
         .name-input:focus {
-            border-bottom-color: var(--gold);
+
+            border-color:
+                var(--rose);
+
         }
 
         .confirm-button {
+
             width: 100%;
-            margin-top: 30px;
+
+            margin-top: 15px;
+
             padding: 17px;
-            background: var(--gold);
-            border: 1px solid var(--gold);
-            color: #111;
-            font-family: 'Montserrat', sans-serif;
+
+            border: none;
+
+            background:
+                var(--blush-dark);
+
+            color:
+                white;
+
+            font-family:
+                'Montserrat',
+                sans-serif;
+
             font-size: 10px;
+
             letter-spacing: 3px;
+
             cursor: pointer;
-            transition: 0.3s;
+
+            transition: .3s;
+
         }
 
         .confirm-button:hover {
-            background: transparent;
-            color: var(--gold);
+
+            background:
+                var(--rose);
+
         }
 
         .rsvp-message {
+
             display: none;
-            padding-top: 25px;
-            color: var(--gold);
-            font-family: 'Cormorant Garamond', serif;
+
+            margin-top: 25px;
+
+            text-align: center;
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
             font-size: 28px;
-            line-height: 1.2;
+
+            color:
+                var(--rose);
+
         }
 
         .rsvp-message.show {
+
             display: block;
-            animation: fadeUp 0.7s ease forwards;
+
         }
 
         /* ================= FINAL ================= */
 
         .final {
+
             min-height: 90vh;
-            background: #111;
+
+            display: flex;
+
+            align-items: center;
+
+            text-align: center;
+
+            background:
+
+                linear-gradient(
+                    rgba(246,241,235,.82),
+                    rgba(246,241,235,.82)
+                ),
+
+                url("images/final.jpg")
+                center / cover;
+
+        }
+
+        .final-content {
+
+            width: 100%;
+
         }
 
         .final-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(70px, 17vw, 170px);
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(65px, 10vw, 150px);
+
             font-weight: 300;
-            line-height: 0.8;
+
+            line-height: .9;
+
+        }
+
+        .final-heart {
+
+            margin: 35px 0;
+
+            color:
+                var(--rose);
+
+            font-size: 25px;
+
         }
 
         .final-date {
-            margin-top: 50px;
-            font-size: 12px;
-            letter-spacing: 5px;
-            color: var(--gold);
+
+            font-size: 11px;
+
+            letter-spacing: 7px;
+
+            color:
+                var(--rose);
+
         }
 
-        .heart {
-            margin-top: 50px;
-            color: var(--gold);
-            font-size: 20px;
-        }
+        /* ================= ANIMATION ================= */
 
-        /* ================= ANIMATIONS ================= */
+        @keyframes heroAppear {
 
-        @keyframes fadeUp {
             from {
+
                 opacity: 0;
-                transform: translateY(40px);
+
+                transform:
+                    translateY(30px);
+
             }
 
             to {
+
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
+
             }
+
         }
 
         @keyframes formAppear {
+
             from {
+
                 opacity: 0;
-                transform: translateY(20px);
+
+                transform:
+                    translateY(15px);
+
             }
 
             to {
+
                 opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        @keyframes scrollLine {
-            0% {
-                transform: scaleY(0);
-                transform-origin: top;
+                transform:
+                    translateY(0);
+
             }
 
-            50% {
-                transform: scaleY(1);
-                transform-origin: top;
-            }
-
-            51% {
-                transform-origin: bottom;
-            }
-
-            100% {
-                transform: scaleY(0);
-                transform-origin: bottom;
-            }
         }
 
         /* ================= MOBILE ================= */
 
-        @media (max-width: 600px) {
+        @media
+        (max-width: 700px) {
 
             section {
-                padding: 50px 20px;
+
+                padding:
+                    75px 20px;
+
+            }
+
+            .hero {
+
+                min-height: 100svh;
+
+            }
+
+            .scroll {
+
+                display: none;
+
+            }
+
+            .invitation-grid,
+            .place-grid,
+            .rsvp-wrapper {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 40px;
+
+            }
+
+            .invitation-image {
+
+                min-height: 350px;
+
+            }
+
+            .place-image {
+
+                min-height: 320px;
+
+                order: -1;
+
             }
 
             .countdown {
+
                 gap: 5px;
+
             }
 
             .time-number {
+
                 font-size: 45px;
+
             }
 
             .time-label {
+
                 font-size: 7px;
+
                 letter-spacing: 2px;
+
             }
 
-            .place-card,
-            .rsvp-card {
-                padding: 60px 20px;
-            }
+            .rsvp-form {
 
-            .name {
-                letter-spacing: -3px;
+                padding: 30px 20px;
+
             }
 
             .rsvp-buttons {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
+
         }
+
     </style>
+
 </head>
 
+
 <body>
+
 
 <!-- ================= HERO ================= -->
 
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="container">
 
-        <div class="invited">
-            YOU ARE INVITED
-        </div>
+        <div class="hero-content">
 
-        <div class="name">
-            ДАРЬЯ
-        </div>
+            <div class="hero-label">
 
-        <div class="age">
-            18
-        </div>
+                YOU ARE INVITED
 
-        <div class="date">
-            12 · 09 · 2026 &nbsp; / &nbsp; 18:00
+            </div>
+
+
+            <div class="hero-name">
+
+                ДАРЬЯ
+
+            </div>
+
+
+            <div class="hero-age">
+
+                18
+
+            </div>
+
+
+            <div class="hero-script">
+
+                лет
+
+            </div>
+
+
+            <div class="hero-date">
+
+                12.09.2026 · 18:00
+
+            </div>
+
         </div>
 
     </div>
 
+
     <div class="scroll">
+
         SCROLL TO EXPLORE
-        <div class="scroll-line"></div>
+
     </div>
 
 </section>
+
 
 
 <!-- ================= INVITATION ================= -->
@@ -584,26 +1109,51 @@
 
     <div class="container">
 
-        <div class="small-title">
-            THE INVITATION
+        <div class="invitation-grid">
+
+            <div>
+
+                <div class="section-label">
+
+                    THE INVITATION
+
+                </div>
+
+
+                <h1 class="invitation-title">
+
+                    18 — это только начало.
+
+                </h1>
+
+
+                <p class="invitation-text">
+
+                    Есть дни рождения,
+                    которые хочется
+                    запомнить надолго.
+
+                    <br><br>
+
+                    Поэтому я хочу провести
+                    этот особенный вечер
+                    вместе с вами.
+
+                </p>
+
+            </div>
+
+
+            <div class="invitation-image">
+
+            </div>
+
         </div>
-
-        <h2>
-            18 — это<br>
-            только начало.
-        </h2>
-
-        <p>
-            Есть дни рождения, которые хочется
-            запомнить надолго.
-            <br><br>
-            Поэтому я хочу провести этот особенный
-            вечер вместе с вами.
-        </p>
 
     </div>
 
 </section>
+
 
 
 <!-- ================= COUNTDOWN ================= -->
@@ -612,34 +1162,91 @@
 
     <div class="container">
 
-        <div class="small-title">
+        <div class="section-label">
+
             COUNTDOWN
+
         </div>
 
+
         <div class="countdown-title">
+
             До встречи
+
         </div>
+
 
         <div class="countdown">
 
-            <div>
-                <div class="time-number" id="days">00</div>
-                <div class="time-label">дней</div>
+            <div class="time-block">
+
+                <div
+                    class="time-number"
+                    id="days"
+                >
+                    00
+                </div>
+
+                <div class="time-label">
+
+                    ДНЕЙ
+
+                </div>
+
             </div>
 
-            <div>
-                <div class="time-number" id="hours">00</div>
-                <div class="time-label">часов</div>
+
+            <div class="time-block">
+
+                <div
+                    class="time-number"
+                    id="hours"
+                >
+                    00
+                </div>
+
+                <div class="time-label">
+
+                    ЧАСА
+
+                </div>
+
             </div>
 
-            <div>
-                <div class="time-number" id="minutes">00</div>
-                <div class="time-label">минут</div>
+
+            <div class="time-block">
+
+                <div
+                    class="time-number"
+                    id="minutes"
+                >
+                    00
+                </div>
+
+                <div class="time-label">
+
+                    МИНУТ
+
+                </div>
+
             </div>
 
-            <div>
-                <div class="time-number" id="seconds">00</div>
-                <div class="time-label">секунд</div>
+
+            <div class="time-block">
+
+                <div
+                    class="time-number"
+                    id="seconds"
+                >
+                    00
+                </div>
+
+                <div class="time-label">
+
+                    СЕКУНД
+
+                </div>
+
             </div>
 
         </div>
@@ -647,6 +1254,7 @@
     </div>
 
 </section>
+
 
 
 <!-- ================= PLACE ================= -->
@@ -655,32 +1263,56 @@
 
     <div class="container">
 
-        <div class="place-card">
+        <div class="place-grid">
 
-            <div class="small-title">
-                THE PLACE
+            <div>
+
+                <div class="section-label">
+
+                    THE PLACE
+
+                </div>
+
+
+                <div class="place-title">
+
+                    Золотой<br>
+                    Лев
+
+                </div>
+
+
+                <div class="place-info">
+
+                    📍 Витебск
+
+                    <br>
+
+                    12 сентября 2026
+
+                    <br>
+
+                    Начало в 18:00
+
+                </div>
+
+
+                <a
+                    class="map-button"
+                    href="https://www.google.com/maps/search/?api=1&query=Золотой+Лев+Витебск"
+                    target="_blank"
+                >
+
+                    ОТКРЫТЬ НА КАРТЕ →
+
+                </a>
+
             </div>
 
-            <div class="place-name">
-                Золотой<br>
-                Лев
-            </div>
 
-            <div class="place-info">
-                Витебск
-                <br>
-                12 сентября 2026
-                <br>
-                Начало в 18:00
-            </div>
+            <div class="place-image">
 
-            <a
-                href="https://www.google.com/maps/search/?api=1&query=Ресторан+Золотой+Лев+Витебск"
-                target="_blank"
-                class="map-button"
-            >
-                ОТКРЫТЬ НА КАРТЕ
-            </a>
+            </div>
 
         </div>
 
@@ -688,29 +1320,6 @@
 
 </section>
 
-
-<!-- ================= DRESS CODE ================= -->
-
-<section class="dress">
-
-    <div class="container">
-
-        <div class="small-title">
-            DRESS CODE
-        </div>
-
-        <div class="dress-title">
-            YOUR STYLE.
-        </div>
-
-        <div class="dress-text">
-            Особого dress code нет.<br>
-            Главное — приходите в хорошем настроении.
-        </div>
-
-    </div>
-
-</section>
 
 
 <!-- ================= RSVP ================= -->
@@ -719,78 +1328,119 @@
 
     <div class="container">
 
-        <div class="rsvp-card">
+        <div class="rsvp-wrapper">
 
-            <div class="small-title">
-                RSVP
+
+            <div>
+
+                <div class="section-label">
+
+                    RSVP
+
+                </div>
+
+
+                <div class="rsvp-title">
+
+                    Сможете<br>
+                    прийти?
+
+                </div>
+
+
+                <div class="rsvp-text">
+
+                    Пожалуйста,
+                    сообщите заранее,
+                    сможете ли вы
+                    разделить этот вечер
+                    вместе со мной ♡
+
+                </div>
+
             </div>
 
-            <div class="rsvp-title">
-                Сможете<br>
-                прийти?
-            </div>
-
-            <div class="rsvp-subtitle">
-                Пожалуйста, сообщите,<br>
-                сможете ли вы быть со мной в этот день.
-            </div>
 
 
-            <div class="rsvp-buttons">
+            <div class="rsvp-form">
 
-                <button
-                    class="rsvp-button"
-                    id="yesButton"
-                    onclick="selectAnswer('yes')"
+
+                <div class="rsvp-buttons">
+
+                    <button
+                        class="rsvp-button"
+                        id="yesButton"
+                        onclick="selectAnswer('yes')"
+                    >
+
+                        ДА, БУДУ ♡
+
+                    </button>
+
+
+                    <button
+                        class="rsvp-button"
+                        id="noButton"
+                        onclick="selectAnswer('no')"
+                    >
+
+                        НЕ СМОГУ
+
+                    </button>
+
+                </div>
+
+
+
+                <div
+                    class="name-form"
+                    id="nameForm"
                 >
-                    ДА, БУДУ ♡
-                </button>
 
-                <button
-                    class="rsvp-button"
-                    id="noButton"
-                    onclick="selectAnswer('no')"
+                    <label
+                        class="name-label"
+                    >
+
+                        Как вас зовут?
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        class="name-input"
+                        id="guestName"
+                        placeholder="Введите ваше имя"
+                    >
+
+
+                    <button
+                        class="confirm-button"
+                        onclick="confirmRSVP()"
+                    >
+
+                        ПОДТВЕРДИТЬ
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="rsvp-message"
+                    id="rsvpMessage"
                 >
-                    НЕ СМОГУ
-                </button>
+
+                </div>
 
             </div>
-
-
-            <div class="name-form" id="nameForm">
-
-                <label class="name-label">
-                    Ваше имя
-                </label>
-
-                <input
-                    type="text"
-                    class="name-input"
-                    id="guestName"
-                    placeholder="Введите имя"
-                    autocomplete="name"
-                >
-
-                <button
-                    class="confirm-button"
-                    onclick="confirmRSVP()"
-                >
-                    ПОДТВЕРДИТЬ
-                </button>
-
-            </div>
-
-
-            <div
-                class="rsvp-message"
-                id="rsvpMessage"
-            ></div>
 
         </div>
 
     </div>
 
 </section>
+
 
 
 <!-- ================= FINAL ================= -->
@@ -799,21 +1449,37 @@
 
     <div class="container">
 
-        <div class="small-title">
-            SEE YOU THERE
-        </div>
+        <div class="final-content">
 
-        <div class="final-title">
-            Давайте<br>
-            отпразднуем.
-        </div>
 
-        <div class="final-date">
-            12 · 09 · 2026
-        </div>
+            <div class="section-label">
 
-        <div class="heart">
-            ♡
+                SEE YOU THERE
+
+            </div>
+
+
+            <div class="final-title">
+
+                Давайте<br>
+                отпразднуем.
+
+            </div>
+
+
+            <div class="final-heart">
+
+                ♡
+
+            </div>
+
+
+            <div class="final-date">
+
+                12 · 09 · 2026
+
+            </div>
+
         </div>
 
     </div>
@@ -821,149 +1487,259 @@
 </section>
 
 
+
 <script>
 
     /* ================= COUNTDOWN ================= */
 
-    const birthday = new Date(
-        "2026-09-12T18:00:00+03:00"
-    );
+    const birthday =
+        new Date(
+            "2026-09-12T18:00:00+03:00"
+        );
+
 
     function updateCountdown() {
 
-        const now = new Date();
+        const now =
+            new Date();
 
-        const difference = birthday - now;
+        const difference =
+            birthday - now;
+
 
         if (difference <= 0) {
 
-            document.getElementById("days").textContent = "00";
-            document.getElementById("hours").textContent = "00";
-            document.getElementById("minutes").textContent = "00";
-            document.getElementById("seconds").textContent = "00";
+            document
+                .getElementById("days")
+                .textContent = "00";
+
+            document
+                .getElementById("hours")
+                .textContent = "00";
+
+            document
+                .getElementById("minutes")
+                .textContent = "00";
+
+            document
+                .getElementById("seconds")
+                .textContent = "00";
 
             return;
+
         }
 
-        const days = Math.floor(
-            difference / (1000 * 60 * 60 * 24)
-        );
 
-        const hours = Math.floor(
-            (difference / (1000 * 60 * 60)) % 24
-        );
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
 
-        const minutes = Math.floor(
-            (difference / (1000 * 60)) % 60
-        );
 
-        const seconds = Math.floor(
-            (difference / 1000) % 60
-        );
+        const hours =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60)
+            ) % 24;
 
-        document.getElementById("days").textContent =
-            String(days).padStart(2, "0");
 
-        document.getElementById("hours").textContent =
-            String(hours).padStart(2, "0");
+        const minutes =
+            Math.floor(
+                difference /
+                (1000 * 60)
+            ) % 60;
 
-        document.getElementById("minutes").textContent =
-            String(minutes).padStart(2, "0");
 
-        document.getElementById("seconds").textContent =
-            String(seconds).padStart(2, "0");
+        const seconds =
+            Math.floor(
+                difference /
+                1000
+            ) % 60;
+
+
+        document
+            .getElementById("days")
+            .textContent =
+                String(days)
+                .padStart(2, "0");
+
+
+        document
+            .getElementById("hours")
+            .textContent =
+                String(hours)
+                .padStart(2, "0");
+
+
+        document
+            .getElementById("minutes")
+            .textContent =
+                String(minutes)
+                .padStart(2, "0");
+
+
+        document
+            .getElementById("seconds")
+            .textContent =
+                String(seconds)
+                .padStart(2, "0");
+
     }
+
 
     updateCountdown();
 
-    setInterval(updateCountdown, 1000);
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
 
 
     /* ================= RSVP ================= */
 
-    let selectedAnswer = null;
+    let selectedAnswer =
+        null;
 
 
     function selectAnswer(answer) {
 
-        selectedAnswer = answer;
+        selectedAnswer =
+            answer;
+
 
         const yesButton =
-            document.getElementById("yesButton");
+            document
+                .getElementById(
+                    "yesButton"
+                );
+
 
         const noButton =
-            document.getElementById("noButton");
+            document
+                .getElementById(
+                    "noButton"
+                );
+
 
         const nameForm =
-            document.getElementById("nameForm");
+            document
+                .getElementById(
+                    "nameForm"
+                );
 
-        yesButton.classList.remove("active");
-        noButton.classList.remove("active");
+
+        yesButton
+            .classList
+            .remove("active");
+
+
+        noButton
+            .classList
+            .remove("active");
+
 
         if (answer === "yes") {
 
-            yesButton.classList.add("active");
-
-        } else {
-
-            noButton.classList.add("active");
+            yesButton
+                .classList
+                .add("active");
 
         }
 
-        nameForm.classList.add("show");
+        else {
 
-        document
-            .getElementById("guestName")
-            .focus();
+            noButton
+                .classList
+                .add("active");
+
+        }
+
+
+        nameForm
+            .classList
+            .add("show");
+
     }
+
 
 
     function confirmRSVP() {
 
         const name =
             document
-                .getElementById("guestName")
+                .getElementById(
+                    "guestName"
+                )
                 .value
                 .trim();
 
+
         const message =
-            document.getElementById("rsvpMessage");
+            document
+                .getElementById(
+                    "rsvpMessage"
+                );
+
 
         const form =
-            document.getElementById("nameForm");
+            document
+                .getElementById(
+                    "nameForm"
+                );
+
 
         if (!name) {
 
-            alert("Пожалуйста, введите ваше имя.");
+            alert(
+                "Пожалуйста, введите ваше имя."
+            );
 
             return;
-        }
-
-
-        form.style.display = "none";
-
-
-        if (selectedAnswer === "yes") {
-
-            message.innerHTML =
-                "Спасибо, " +
-                name +
-                "!<br><br>Буду ждать вас ♡";
-
-        } else {
-
-            message.innerHTML =
-                "Спасибо, " +
-                name +
-                "!<br><br>Буду очень скучать ♡";
 
         }
 
-        message.classList.add("show");
+
+        form.style.display =
+            "none";
+
+
+        if (
+            selectedAnswer === "yes"
+        ) {
+
+            message.innerHTML =
+
+                "Спасибо, " +
+                name +
+                "!<br><br>" +
+                "Буду очень ждать вас ♡";
+
+        }
+
+        else {
+
+            message.innerHTML =
+
+                "Спасибо, " +
+                name +
+                "!<br><br>" +
+                "Буду скучать ♡";
+
+        }
+
+
+        message
+            .classList
+            .add("show");
 
     }
 
 </script>
 
+
 </body>
+
 </html>
