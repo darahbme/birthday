@@ -1489,7 +1489,31 @@
 
 </section>
 
+<iframe
+    name="rsvpFrame"
+    id="rsvpFrame"
+    style="display:none;">
+</iframe>
 
+<form
+    id="rsvpForm"
+    action="https://script.google.com/macros/s/AKfycbz4QHIt_VI8jEJ-Ju8DQsMc487qed-qzjfK8-jWR8vOIru5hLvl3c7oDaSObCg33Vwt/exec"
+    method="POST"
+    target="rsvpFrame"
+    style="display:none;"
+>
+    <input
+        type="hidden"
+        name="name"
+        id="formName"
+    >
+
+    <input
+        type="hidden"
+        name="answer"
+        id="formAnswer"
+    >
+</form>
 
 <script>
 
@@ -1669,76 +1693,84 @@
 
 
 
-    function confirmRSVP() {
+   function confirmRSVP() {
 
-        const name =
-            document
-                .getElementById(
-                    "guestName"
-                )
-                .value
-                .trim();
+    const name = document
+        .getElementById("guestName")
+        .value
+        .trim();
 
+    const message = document
+        .getElementById("rsvpMessage");
 
-        const message =
-            document
-                .getElementById(
-                    "rsvpMessage"
-                );
+    const form = document
+        .getElementById("nameForm");
 
+    if (!name) {
 
-        const form =
-            document
-                .getElementById(
-                    "nameForm"
-                );
+        alert("Пожалуйста, введите ваше имя.");
 
-
-        if (!name) {
-
-            alert(
-                "Пожалуйста, введите ваше имя."
-            );
-
-            return;
-
-        }
-
-
-        form.style.display =
-            "none";
-
-
-        if (
-            selectedAnswer === "yes"
-        ) {
-
-            message.innerHTML =
-
-                "Спасибо, " +
-                name +
-                "!<br><br>" +
-                "Буду очень ждать вас ♡";
-
-        }
-
-        else {
-
-            message.innerHTML =
-
-                "Спасибо, " +
-                name +
-                "!<br><br>" +
-                "Буду скучать ♡";
-
-        }
-
-
-        message
-            .classList
-            .add("show");
-
+        return;
     }
+
+    if (!selectedAnswer) {
+
+        alert("Пожалуйста, выберите вариант ответа.");
+
+        return;
+    }
+
+
+    /* Передаём данные в скрытую форму */
+
+    document
+        .getElementById("formName")
+        .value = name;
+
+
+    document
+        .getElementById("formAnswer")
+        .value =
+            selectedAnswer === "yes"
+                ? "Буду ❤️"
+                : "Не смогу";
+
+
+    /* Отправляем в Google */
+
+    document
+        .getElementById("rsvpForm")
+        .submit();
+
+
+    /* Прячем форму */
+
+    form.style.display = "none";
+
+
+    /* Показываем сообщение */
+
+    if (selectedAnswer === "yes") {
+
+        message.innerHTML =
+            "Спасибо, " +
+            name +
+            "!<br><br>" +
+            "Буду очень ждать вас ♡";
+
+    } else {
+
+        message.innerHTML =
+            "Спасибо, " +
+            name +
+            "!<br><br>" +
+            "Буду скучать ♡";
+    }
+
+
+    message.classList.add("show");
+
+}
 
 </script>
 
